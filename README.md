@@ -66,6 +66,34 @@ Cada execução do cliente adiciona uma nova linha ao arquivo.
 └── go.sum
 ```
 
+## Acessando o banco de dados localmente
+
+O banco de dados SQLite fica em `src/database/database.db` e é criado automaticamente quando o servidor é iniciado pela primeira vez.
+
+### Usando o SQLite CLI
+
+```bash
+sqlite3 src/database/database.db
+```
+
+Dentro do shell do SQLite, alguns comandos úteis:
+
+```sql
+-- Listar todas as cotações salvas
+SELECT * FROM cotacoes;
+
+-- Ver as N cotações mais recentes
+SELECT * FROM cotacoes ORDER BY id DESC LIMIT 10;
+
+-- Sair
+.quit
+```
+
+> **Instalação do SQLite CLI:**
+> - macOS: `brew install sqlite`
+> - Ubuntu/Debian: `sudo apt install sqlite3`
+> - Windows: baixe em https://sqlite.org/download.html
+
 ## Timeouts
 
 | Operação                        | Timeout |
